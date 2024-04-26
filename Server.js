@@ -10,8 +10,19 @@ app.use(cors())
 
 app.use(ex.json())
 
+const mon = require('mongoose')
 
-require("./database")
+mon.set('strictQuery' , false)
+
+
+mon.connect("mongodb+srv://hrishi007:qwerty100@cluster0.rdpsxvx.mongodb.net/").then(()=>{
+    console.log("connected to Mongoose") 
+}).catch(()=>{
+    console.log("Error while connecting to database")
+})
+
+
+
 
 app.use('/api/blog' , brouter)
 
